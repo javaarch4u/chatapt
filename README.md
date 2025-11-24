@@ -124,6 +124,21 @@ model.save_pretrained("gemma-3n-chatapt")
 tokenizer.save_pretrained("gemma-3n-chatapt")
 ```
 
+Saving to float16 for VLLM:
+
+```python
+model.save_pretrained_merged("gemma-3N-chatapt", tokenizer)
+```
+
+Saving as GGUF for llama.cpp:
+```python
+model.save_pretrained_gguf(
+    "gemma-3N-chatat",
+    tokenizer,
+    quantization_method = "Q8_0", # For now only Q8_0, BF16, F16 supported
+)
+```
+
 To reload:
 
 ```python
@@ -145,3 +160,4 @@ model, tokenizer = load_model_and_tokenizer()
 ## License
 
 This project is released under the MIT License.
+
